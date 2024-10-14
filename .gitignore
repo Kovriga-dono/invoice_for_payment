@@ -1,0 +1,8 @@
+__pycache__/
+.idea/
+.pytest_cache/
+models/__pycache__
+pages/__pycache__
+tests/__pycache__
+geckodriver.log
+results/
