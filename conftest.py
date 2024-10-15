@@ -11,6 +11,5 @@ import pytest
 @pytest.fixture()
 def browser_c():
     config.driver_name = 'chrome'
-    config.window_width = 1920
-    config.window_height = 1080
+    config.driver.maximize_window()
 

@@ -7,3 +7,6 @@ class Fields:
     pas: str
     inn: str
     addres: str
+    service: str
+    quantity: str
+    price: str
