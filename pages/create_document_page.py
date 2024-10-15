@@ -7,7 +7,7 @@ from selene.core import command as _advanced_commands
 command = _advanced_commands
 
 
-def fill_inn():
+def create_document():
     s(locators.inn).set(data.contact.inn)
     s(locators.inn_click).click()
     browser.element(locators.cr_button).perform(command.js.scroll_into_view)
@@ -17,6 +17,9 @@ def fill_inn():
     s(locators.comment).click()
     time.sleep(2)
     s(locators.cr_button).click()
+
+
+def close_popup():
     s(locators.close_button).click()
     time.sleep(5)
     browser.switch_to_next_tab()
