@@ -14,4 +14,6 @@ def test_absence_window(browser):
     create_document_page.filling_fields()
     create_document_page.switch_tabs()
     create_document_page.check_modal_window()
+    main_page.quit_browser()
+
 

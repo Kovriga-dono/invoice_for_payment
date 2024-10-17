@@ -14,3 +14,4 @@ def test_reject_popup(browser):
     create_document_page.reject_popup()
     create_document_page.switch_tabs()
     create_document_page.check_inn()
+    main_page.quit_browser()

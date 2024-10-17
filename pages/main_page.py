@@ -16,3 +16,7 @@ def login():
     s(locators.password).set(data.contact.pas)
     s(locators.log_button).click()
     s(locators.accept).set(data.contact.pas)
+
+
+def quit_browser():
+    browser.quit()

@@ -29,6 +29,10 @@ def reject_popup():
     s(locators.cancel_button).click()
 
 
+def accept_popup():
+    s(locators.save_button).click()
+
+
 def switch_tabs():
     selene.browser.switch_to_next_tab()
     selene.browser.switch_to_previous_tab()
@@ -42,7 +46,6 @@ def check_inn():
     b = re.search(r'\d+$', s(locators.inn_in_list).get(query.text)).group()
     a = data.contact.inn
     assert int(b) != int(a)
-    selene.browser.driver.quit()
 
 
 def chose_inn():
@@ -56,4 +59,7 @@ def set_addres():
 
 def check_modal_window():
     browser.should(have.no.text('Сохранить контрагента?'))
-    browser.quit()
+
+
+def counterparty_click():
+    s(locators.counterparty_button).click()

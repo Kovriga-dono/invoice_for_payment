@@ -16,3 +16,4 @@ def test_close_popup(browser):
     create_document_page.close_popup()
     create_document_page.switch_tabs()
     create_document_page.check_inn()
+    main_page.quit_browser()
