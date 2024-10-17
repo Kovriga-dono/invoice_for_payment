@@ -1,4 +1,4 @@
-from selene import browser
+import selene
 from selene.api import *
 import re
 from models import locators, data
@@ -7,10 +7,13 @@ from selene.core import command as _advanced_commands
 command = _advanced_commands
 
 
-def create_document():
+def set_inn():
     s(locators.inn).set(data.contact.inn)
     s(locators.inn_click).click()
-    browser.element(locators.bot).perform(command.js.scroll_into_view)
+
+
+def filling_fields():
+    selene.browser.element(locators.bot).perform(command.js.scroll_into_view)
     s(locators.service).set(data.contact.service)
     s(locators.quantity).set(data.contact.quantity)
     s(locators.price).set(data.contact.price)
@@ -27,16 +30,30 @@ def reject_popup():
 
 
 def switch_tabs():
-    browser.switch_to_next_tab()
-    browser.switch_to_previous_tab()
+    selene.browser.switch_to_next_tab()
+    selene.browser.switch_to_previous_tab()
 
 
 def check_inn():
     s(locators.comment).click()
-    browser.element(locators.headder).perform(command.js.scroll_into_view)
-    browser.driver.refresh()
+    selene.browser.element(locators.headder).perform(command.js.scroll_into_view)
+    selene.browser.driver.refresh()
     s(locators.inn).click()
     b = re.search(r'\d+$', s(locators.inn_in_list).get(query.text)).group()
     a = data.contact.inn
     assert int(b) != int(a)
-    browser.driver.quit()
+    selene.browser.driver.quit()
+
+
+def chose_inn():
+    s(locators.inn).click()
+    s(locators.inn_in_list).click()
+
+
+def set_addres():
+    s(locators.addres).set(data.contact.addres)
+
+
+def check_modal_window():
+    browser.should(have.no.text('Сохранить контрагента?'))
+    browser.quit()

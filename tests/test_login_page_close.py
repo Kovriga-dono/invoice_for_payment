@@ -11,7 +11,8 @@ import allure
 def test_close_popup(browser):
     main_page.open_browser()
     main_page.login()
-    create_document_page.create_document()
+    create_document_page.set_inn()
+    create_document_page.filling_fields()
     create_document_page.close_popup()
     create_document_page.switch_tabs()
     create_document_page.check_inn()
