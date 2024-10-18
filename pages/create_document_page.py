@@ -1,3 +1,5 @@
+import time
+
 import selene
 from selene.api import *
 import re
@@ -43,6 +45,7 @@ def check_inn():
     selene.browser.element(locators.headder).perform(command.js.scroll_into_view)
     selene.browser.driver.refresh()
     s(locators.inn).click()
+    time.sleep(5)
     b = re.search(r'\d+$', s(locators.inn_in_list).get(query.text)).group()
     a = data.contact.inn
     assert int(b) != int(a)
