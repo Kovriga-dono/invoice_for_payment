@@ -63,3 +63,4 @@ def check_modal_window():
 
 def counterparty_click():
     s(locators.counterparty_button).click()
+
