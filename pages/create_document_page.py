@@ -1,4 +1,3 @@
-from selene import browser, have
 import selene
 from selene.api import *
 import re
