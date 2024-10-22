@@ -1,9 +1,7 @@
 from selene.api import *
-from models import locators, data
+from models import data
+from pages import locators
 import allure
-from selene.core import command as _advanced_commands
-
-command = _advanced_commands
 
 
 def open_browser():
@@ -20,3 +18,5 @@ def login():
 
 def quit_browser():
     browser.quit()
+
+

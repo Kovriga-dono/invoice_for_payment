@@ -10,3 +10,6 @@ class Fields:
     service: str
     quantity: str
     price: str
+    company_name: str
+    kpp: str
+

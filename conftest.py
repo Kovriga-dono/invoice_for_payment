@@ -11,4 +11,5 @@ def pytest_addoption(parser):
 def browser():
     config.driver_name = 'chrome'
     config.window_width = 1200
-    config.window_height = 768
+    config.window_height = 1000
+
