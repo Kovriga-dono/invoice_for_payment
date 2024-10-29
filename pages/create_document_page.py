@@ -4,17 +4,18 @@ import re
 from models import data
 from pages import locators
 from selene.core import command as _advanced_commands
+import allure
 
 command = _advanced_commands
 
 
-# заполняем ИНН организации
+@allure.step("заполняем ИНН")
 def set_inn():
     s(locators.inn).set(data.contact.inn)
     s(locators.inn_click).click()
 
 
-# заполняем обязательные поля
+@allure.step("заполняем обязательные поля")
 def filling_fields():
     browser.wait_until(lambda: browser.execute_script("return document.readyState") == 'complete')
     selene.browser.element(locators.bot).perform(command.js.scroll_into_view)
@@ -27,30 +28,30 @@ def filling_fields():
     s(locators.cr_button).click()
 
 
-# закрытие модального окна на "крестик"
+@allure.step("закрываем модальное окно нажатием крестика")
 def close_popup():
     s(locators.close_button).click()
 
 
-# закрытие модального окна кнопкой "отмена"
+@allure.step("в модальном окне нажимаем 'отмена'")
 def reject_popup():
     s(locators.cancel_button).click()
 
 
-# кнопка поддверждения модального окна
+@allure.step("в модальном окне нажимаем 'создать'")
 def accept_popup():
     selene.browser.element(locators.save_button).perform(command.js.scroll_into_view)
     s(locators.save_button).click()
 
 
-# переключение между активными вкладками
+@allure.step("возвращаемся на вкладку после формирования документа")
 def switch_tabs():
     browser.wait_until(lambda: browser.execute_script("return document.readyState") == 'complete')
     selene.browser.switch_to_next_tab()
     selene.browser.switch_to_previous_tab()
 
 
-# сравнение инн последнего созданного контрагента
+@allure.step("проверяем ИНН последнего созданного клиента")
 def check_inn():
     s(locators.comment).click()
     selene.browser.element(locators.headder).perform(command.js.scroll_into_view)
@@ -58,25 +59,25 @@ def check_inn():
     s(locators.inn).click()
     b = re.search(r'\d+$', s(locators.inn_in_list).get(query.text)).group()
     a = data.contact.inn
-    assert int(b) != int(a)
+    assert int(b) != int(a), "ошибка, клиент был сохранён"
 
 
-# выбор инн
+@allure.step("выбираем ИНН из списка")
 def chose_inn():
     s(locators.inn).click().should(be.visible)
     s(locators.inn_in_list).click()
 
 
-# установка адреса
+@allure.step("заполняем адрес")
 def set_addres():
     s(locators.addres).set(data.contact.addres)
 
 
-# проверка открытия модального окна
+@allure.step("проверяем открытие модального окна")
 def check_modal_window():
     browser.should(have.no.text('Сохранить контрагента?'))
 
 
-# переход на страницу контрагентов
+@allure.step("переходим на страницу контрагентов")
 def counterparty_click():
     s(locators.counterparty_button).click()
