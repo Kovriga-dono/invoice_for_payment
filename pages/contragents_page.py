@@ -2,7 +2,7 @@ import selene
 from selene.api import *
 import re
 from models import data
-from pages import locators
+from pages import locators, urls
 from selene.core import command as _advanced_commands
 import allure
 
@@ -11,6 +11,8 @@ command = _advanced_commands
 
 @allure.step("сравниваем заполненные данные с данными в карточке клиента")
 def output_data():
+    browser.wait_until(lambda: browser.execute_script("return document.readyState") == 'complete')
+    assert browser.driver.current_url == urls.contragents_page, "открыта не корректная страница"
     output_comp_name = s(locators.contragent_name).get(query.text)
     assert output_comp_name == data.contact.company_name, "имя компании не совпадает"
     output_inn = s(locators.contragent_inn).get(query.text)

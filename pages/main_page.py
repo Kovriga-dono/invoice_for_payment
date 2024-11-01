@@ -1,4 +1,5 @@
 from selene.api import *
+# from selene import browser
 from models import data
 from pages import locators
 import allure
@@ -16,6 +17,8 @@ def login():
     s(locators.password).set(data.contact.pas)
     s(locators.log_button).click()
     s(locators.accept).set(data.contact.pas)
+    browser.wait_until(lambda: browser.execute_script("return document.readyState") == 'complete')
+    assert browser.driver.current_url == urls.main_page, "открыта не корректная страница"
 
 
 @allure.step("закрываем браузер")
