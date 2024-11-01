@@ -41,4 +41,3 @@ def delete_contragency():
     s(locators.save_button).click()
     output_comp_name = s(locators.contragent_name).get(query.text)
     assert output_comp_name != data.contact.company_name, "последний созданный клиент не был удалён!"
-

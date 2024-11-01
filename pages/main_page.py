@@ -1,5 +1,4 @@
 from selene.api import *
-# from selene import browser
 from models import data
 from pages import locators
 import allure
