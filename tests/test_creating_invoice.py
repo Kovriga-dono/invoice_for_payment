@@ -18,6 +18,8 @@ def test_absence_window(browser):
     main_page.quit_browser()
 
 
+@allure.epic("ДБО")
+@allure.feature("Создание счета на оплату")
 @allure.testcase("SKB_LAB-28040")
 @allure.title("SKB_LAB-28040 : Создание счета на оплату с добавдением контрагента")
 def test_creating_counterparty(browser):
@@ -34,6 +36,8 @@ def test_creating_counterparty(browser):
     main_page.quit_browser()
 
 
+@allure.epic("ДБО")
+@allure.feature("Создание счета на оплату")
 @allure.testcase("SKB_LAB-28056")
 @allure.title("SKB_LAB-28056 : Кнопка 'Крестик' в модальном окне 'Сохранить контрагента?'")
 def test_close_popup(browser):
@@ -47,6 +51,8 @@ def test_close_popup(browser):
     main_page.quit_browser()
 
 
+@allure.epic("ДБО")
+@allure.feature("Создание счета на оплату")
 @allure.testcase("SKB_LAB-28054")
 @allure.title("SKB_LAB-28054 : Кнопка 'Отменить' в модальном окне 'Сохранить контрагента?'")
 def test_reject_popup(browser):
